@@ -2,18 +2,30 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO.pdf";
+import firstPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO.pdf";
+import secondPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO-IN.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
-  const [width, setWidth] = useState(1200);
+  const [numPages, setNumPages] = useState(null);
 
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
+  const renderPages = (pdfFile) => {
+    const pages = [];
+    const scale = 1; // Ajusta la escala según tus necesidades
+    for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
+      pages.push(
+        <Page key={pageNumber} pageNumber={pageNumber} scale={scale} />
+      );
+    }
+    return pages;
+  };
 
   return (
     <div>
@@ -22,7 +34,7 @@ function ResumeNew() {
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="primary"
-            href={pdf}
+            href={firstPdf}
             target="_blank"
             style={{ maxWidth: "250px" }}
           >
@@ -32,16 +44,42 @@ function ResumeNew() {
         </Row>
 
         <Row className="resume">
-          <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 350 ? 0.7 : 0.3} />
-            <Page pageNumber={2} scale={width > 350 ? 0.7 : 0.3} />
+          <Document
+            file={firstPdf}
+            className="d-flex justify-content-center"
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            {renderPages(firstPdf)}
           </Document>
         </Row>
 
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="primary"
-            href={pdf}
+            href={firstPdf}
+            target="_blank"
+            style={{ maxWidth: "250px" }}
+          >
+            <AiOutlineDownload />
+            &nbsp;Download CV
+          </Button>
+        </Row>
+
+        {/* Nuevo PDF */}
+        <Row className="resume">
+          <Document
+            file={secondPdf}
+            className="d-flex justify-content-center"
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            {renderPages(secondPdf)}
+          </Document>
+        </Row>
+
+        <Row style={{ justifyContent: "center", position: "relative" }}>
+          <Button
+            variant="primary"
+            href={secondPdf}
             target="_blank"
             style={{ maxWidth: "250px" }}
           >
