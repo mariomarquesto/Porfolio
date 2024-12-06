@@ -58,7 +58,7 @@ function Projects() {
             <ProjectCard
               imgPath={TiendaCuty}
               isBlog={false}
-              title="DRIVERS"
+              title="TIENDA CUTY"
               description="TIENDA CUTY | Proyecto Ecommerce | OBJETIVOS: aplicación de comercio electrónico desarrollada en React con Material-UI para el diseño de la interfaz de usuario y Firebase como backend para la autenticación "
               ghLink="https://ecommerce-firebase-black.vercel.app/"
                             
