@@ -5,7 +5,7 @@ import Particle from "../Particle";
 import drivers from "../../Assets/Projects/drivers.jpg";
 import paises2 from "../../Assets/Projects/paises2.jpg";
 import videoGames from "../../Assets/Projects/videoGames.jpg";
-
+import TiendaCuty from "../../Assets/Projects/TiendaCuty.jpg";
 
 function Projects() {
   return (
@@ -28,6 +28,7 @@ function Projects() {
               ghLink="https://github.com/mariomarquesto/COUNTRIES.git"
               
             />
+            
           </Col>
 
           <Col md={4} className="project-card">
@@ -44,6 +45,18 @@ function Projects() {
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={drivers}
+              isBlog={false}
+              title="TiendaCuty"
+              description="TIENDA CUTY | Proyecto Ecommerce | OBJETIVOS:  aplicación de comercio electrónico desarrollada en React con Material-UI para el diseño de la interfaz de usuario y Firebase como backend para la autenticación "
+              ghLink="https://github.com/mariomarquesto/ecommerce-firebase.git"
+                            
+            />
+          </Col>
+
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={TiendaCuty}
               isBlog={false}
               title="DRIVERS"
               description="DRIVERS | Proyecto Individual | OBJETIVOS: Construir una Single Page Application utlizando las tecnologías: React, Redux, Node, Express y Sequelize"
