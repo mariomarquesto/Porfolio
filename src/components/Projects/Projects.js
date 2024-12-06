@@ -59,7 +59,7 @@ function Projects() {
               imgPath={TiendaCuty}
               isBlog={false}
               title="DRIVERS"
-              description="DRIVERS | Proyecto Individual | OBJETIVOS: Construir una Single Page Application utlizando las tecnologías: React, Redux, Node, Express y Sequelize"
+              description="TIENDA CUTY | Proyecto Ecommerce | OBJETIVOS: aplicación de comercio electrónico desarrollada en React con Material-UI para el diseño de la interfaz de usuario y Firebase como backend para la autenticación "
               ghLink="https://github.com/mariomarquesto/Drivers.git"
                             
             />
