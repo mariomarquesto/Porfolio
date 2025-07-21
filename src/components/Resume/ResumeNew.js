@@ -1,95 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Particle from "../Particle";
-import firstPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO-ESP.pdf";
-import secondPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO-IN.pdf";
-import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import React from "react";
 
-function ResumeNew() {
-  const [numPages, setNumPages] = useState(null);
-
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
-
-  const renderPages = (pdfFile) => {
-    const pages = [];
-    const scale = 1; // Ajusta la escala según tus necesidades
-    for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
-      pages.push(
-        <Page key={pageNumber} pageNumber={pageNumber} scale={scale} />
-      );
-    }
-    return pages;
-  };
-
+const About = () => {
   return (
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={firstPdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
+    <div style={{ padding: "2rem" }}>
+      <h2>Mi Currículum</h2>
 
-        <Row className="resume">
-          <Document
-            file={firstPdf}
-            className="d-flex justify-content-center"
-            onLoadSuccess={onDocumentLoadSuccess}
-          >
-            {renderPages(firstPdf)}
-          </Document>
-        </Row>
+      {/* Enlace para abrir en nueva pestaña */}
+      <a
+        href="/pdf/MARQUESTO-MARIO-ANIBAL-FRANCISCO-ESPAÑOL.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "inline-block",
+          padding: "10px 20px",
+          backgroundColor: "#007bff",
+          color: "white",
+          textDecoration: "none",
+          borderRadius: "5px",
+          marginBottom: "20px"
+        }}
+      >
+        Abrir CV en nueva pestaña
+      </a>
 
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={firstPdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
-
-        {/* Nuevo PDF */}
-        <Row className="resume">
-          <Document
-            file={secondPdf}
-            className="d-flex justify-content-center"
-            onLoadSuccess={onDocumentLoadSuccess}
-          >
-            {renderPages(secondPdf)}
-          </Document>
-        </Row>
-
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={secondPdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
-      </Container>
+      {/* Mostrar PDF directamente */}
+      <iframe
+        src="/pdf/MARQUESTO-MARIO-ANIBAL-FRANCISCO-ESPAÑOL.pdf"
+        width="100%"
+        height="800px"
+        title="CV Inglés"
+        style={{
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          marginTop: "1rem"
+        }}
+      />
     </div>
   );
-}
+};
 
-export default ResumeNew;
+export default About;

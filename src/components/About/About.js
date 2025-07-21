@@ -1,54 +1,34 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Particle";
-import Github from "./Github";
-import Techstack from "./Techstack";
-import Aboutcard from "./AboutCard";
-import laptopImg from "../../Assets/about.png";
-import Toolstack from "./Toolstack";
+import { eachDayOfInterval, format } from "date-fns";
 
-function About() {
+function generateEmptyData(startDate, endDate) {
+  // Devuelve un arreglo de strings con los días entre startDate y endDate
+  const days = eachDayOfInterval({
+    start: startDate,
+    end: endDate,
+  });
+
+  // Opcional: formatear fechas a "yyyy-MM-dd"
+  return days.map(day => format(day, "yyyy-MM-dd"));
+}
+
+// Componente de ejemplo
+function DateList() {
+  const start = new Date(2025, 6, 1); // Julio es mes 6 (0-based)
+  const end = new Date(2025, 6, 7);
+
+  const daysArray = generateEmptyData(start, end);
+
   return (
-    <Container fluid className="about-section">
-      <Particle />
-      <Container>
-        <Row style={{ justifyContent: "center", padding: "10px" }}>
-          <Col
-            md={7}
-            style={{
-              justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
-            }}
-          >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Know Who <strong className="purple">I'M</strong>
-            </h1>
-            <Aboutcard />
-          </Col>
-          <Col
-            md={5}
-            style={{ paddingTop: "120px", paddingBottom: "50px" }}
-            className="about-img"
-          >
-            <img src={laptopImg} alt="about" className="img-fluid" />
-          </Col>
-        </Row>
-        <h1 className="project-heading">
-          Professional <strong className="purple">Skillset </strong>
-        </h1>
-
-        <Techstack />
-
-        <h1 className="project-heading">
-          <strong className="purple">Tools</strong> I use
-        </h1>
-        <Toolstack />
-
-        <Github />
-      </Container>
-    </Container>
+    <div>
+      <h3>Días entre {format(start, "yyyy-MM-dd")} y {format(end, "yyyy-MM-dd")}:</h3>
+      <ul>
+        {daysArray.map(dayStr => (
+          <li key={dayStr}>{dayStr}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default About;
+export default DateList;
