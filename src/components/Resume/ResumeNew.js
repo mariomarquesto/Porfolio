@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import firstPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO.pdf";
+import firstPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO-ESP.pdf";
 import secondPdf from "./MARQUESTO-MARIO-ANIBAL-FRANCISCO-IN.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
